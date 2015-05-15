@@ -1,0 +1,26 @@
+﻿@using System.Web.UI.WebControls
+@using Icon = System.Drawing.Icon
+@model TwitterBootstrapMVCDemo.Models.TestModel
+
+
+
+@{
+    ViewBag.Title = "Simple Form";
+}
+
+<h2>Index</h2>
+
+@using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal).LabelWidthSm(2).InputWidthMd(8)))
+{
+    
+
+    @f.FormGroup().TextBoxFor(x => x.UserName).Size(InputSize.Large).Placeholder("Enter name").Value("").Label().LabelText("User Name").ShowRequiredStar(true)
+    
+    @f.FormGroup().TextBoxFor(x => x.Password).Size(InputSize.Large).Placeholder("Enter Password").Value(string.Empty).Label().LabelText("Password").ShowRequiredStar(true)
+
+    @f.FormGroup().CheckBoxFor(x => x.RememberMe).Label().LabelText("Remember me")
+    
+    @:@f.FormGroup().CustomControls(Html.Bootstrap().Button().Text("Sign in").Style(ButtonStyle.Success).Tooltip("Quick Help!"), (Html.Bootstrap().Button().Text("Clear").Style(ButtonStyle.Info)))
+    
+
+}
